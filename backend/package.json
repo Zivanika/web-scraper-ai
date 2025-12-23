@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev:api": "concurrently \"tsc --watch\" \"nodemon dist/api/index.js\"",
-    "dev:worker": "concurrently \"tsc --watch\" \"nodemon dist/workers/scrape.worker.js\""
+    "build": "tsc",
+    "start": "node dist/api/index.js",
+    "dev": "concurrently \"tsc --watch\" \"nodemon dist/api/index.js\" \"nodemon dist/workers/scrape.worker.js\""
   },
   "author": "harshita",
   "license": "ISC",

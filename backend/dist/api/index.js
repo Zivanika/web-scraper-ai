@@ -8,6 +8,10 @@ dotenv_1.default.config();
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const task_route_1 = __importDefault(require("../routes/task.route"));
+// The worker file will execute when imported, creating the worker instance
+// Worker initialization errors are handled within the worker file itself
+console.log("Loading BullMQ worker...");
+require("../workers/scrape.worker");
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)({
     origin: process.env.FRONTEND_URL || "http://localhost:3000",

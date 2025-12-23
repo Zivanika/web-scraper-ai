@@ -5,6 +5,11 @@ import express from "express";
 import cors from "cors";
 import tasksRoute from "../routes/task.route";
 
+// The worker file will execute when imported, creating the worker instance
+// Worker initialization errors are handled within the worker file itself
+console.log("Loading BullMQ worker...");
+import "../workers/scrape.worker";
+
 const app = express();
 
 app.use(
