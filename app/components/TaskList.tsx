@@ -1,12 +1,29 @@
 import { Task } from '@/app/types/Tasks';
 import { TaskCard } from './TaskCard';
 import { ListTodo } from 'lucide-react';
+import { TaskListSkeleton } from './TaskSkeleton';
 
 interface TaskListProps {
   tasks: Task[];
+  isLoading: boolean;
+  error: Error | null;
 }
 
-export function TaskList({ tasks }: TaskListProps) {
+export function TaskList({ tasks, isLoading, error }: TaskListProps) {
+  if (isLoading) {
+    return (
+      <div className="flex flex-col items-center justify-center text-center">
+        <TaskListSkeleton />
+      </div>
+    );
+  }
+  if (error) {
+    return (
+      <div className="flex flex-col items-center justify-center py-16 text-center">
+        <p className="text-sm text-red-500">Error loading tasks: {error.message}</p>
+      </div>
+    );
+  }
   if (tasks.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-16 text-center">

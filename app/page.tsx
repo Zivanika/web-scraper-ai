@@ -7,7 +7,7 @@ import { Zap, Database, Bot, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Home = () => {
-  const { tasks, stats, isSubmitting, submitTask, refreshTasks } = useTasks();
+  const { tasks, stats, isSubmitting, isLoading, error, submitTask, refreshTasks } = useTasks();
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] relative">
@@ -96,7 +96,7 @@ const Home = () => {
               </div>
             </div>
 
-            <TaskList tasks={tasks} />
+            <TaskList tasks={tasks} isLoading={isLoading} error={error} />
           </div>
         </div>
       </main>
